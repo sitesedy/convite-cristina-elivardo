@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristina & Elivardo | Convite de Casamento</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel, Cormorant Garamond & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF8E7',
+                            300: '#F3E5AB',
+                            500: '#D4AF37',
+                            700: '#AA771C',
+                            900: '#664608'
+                        },
+                        dark: {
+                            bg: '#0A0A0C',
+                            card: '#141419',
+                            border: '#2A2A35'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['"Cinzel"', 'serif'],
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0A0A0C;
+            color: #E2E8F0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFF8E7 0%, #D4AF37 50%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-gold {
+            background: rgba(20, 20, 25, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .glass-gold:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- ESTILOS DO ENVELOPE DE ABERTURA --- */
+        #envelopeOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background-color: #050507;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1.8s ease-in-out, visibility 1.8s ease-in-out;
+        }
+
+        #envelopeOverlay.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* --- CLARÃO FLUIDO E ORGÂNICO --- */
+        #flashOverlay {
+            position: fixed;
+            inset: 0;
+            z-index: 150;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 1.2s;
+        }
+
+        #flashOverlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .light-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10vmax;
+            height: 10vmax;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffffff 0%, #fff8e7 35%, #f3e5ab 60%, rgba(212,175,55,0) 100%);
+            transform: translate(-50%, -50%) scale(1);
+            filter: blur(15px);
+        }
+
+        #flashOverlay.active .light-core {
+            animation: expandCore 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .light-halo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150vmax;
+            height: 150vmax;
+            background: radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,248,231,0.95) 25%, rgba(212,175,55,0.7) 60%, rgba(10,10,12,0) 100%);
+            transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
+            filter: blur(40px);
+        }
+
+        #flashOverlay.active .light-halo {
+            animation: expandHalo 2.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes expandCore {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(30);
+                opacity: 0.95;
+            }
+        }
+
+        @keyframes expandHalo {
+            0% {
+                transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
+                opacity: 0;
+            }
+            40% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.4) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background-color: #121215;
+            border-radius: 6px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .envelope-wrapper:hover .envelope {
+            transform: translateY(-5px);
+        }
+
+        .envelope .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 125px solid #1a1a20;
+            transform-origin: top;
+            transition: transform 0.8s ease-in-out, z-index 0.2s ease-in-out;
+            z-index: 4;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+        }
+
+        .stamp {
+            position: absolute;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #FFF8E7 0%, #D4AF37 60%, #AA771C 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0a0a0c;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 13px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            z-index: 5;
+            transition: opacity 0.4s ease, transform 0.3s ease;
+        }
+
+        .envelope-wrapper:hover .stamp {
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        .envelope .pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 160px solid #141419;
+            border-right: 160px solid #141419;
+            border-bottom: 115px solid #1c1c24;
+            border-radius: 0 0 6px 6px;
+            z-index: 3;
+        }
+
+        .envelope .card-preview {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 290px;
+            height: 190px;
+            background: linear-gradient(145deg, #18181f, #0d0d10);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s ease-in-out, z-index 0.4s ease;
+        }
+
+        /* Animações de Abertura */
+        .envelope-wrapper.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-wrapper.open .stamp {
+            opacity: 0;
+        }
+
+        .envelope-wrapper.open .card-preview {
+            transform: translate(-50%, -100px);
+            z-index: 5;
+        }
+    </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black">
+
+    <!-- CLARÃO DE TRANSIÇÃO FLUIDO -->
+    <div id="flashOverlay">
+        <div class="light-core"></div>
+        <div class="light-halo"></div>
+    </div>
+
+    <!-- OVERLAY DO ENVELOPE -->
+    <div id="envelopeOverlay">
+        <div class="envelope-wrapper" id="envelopeWrapper">
+            <div class="envelope">
+                <div class="flap">
+                    <div class="stamp">C&E</div>
+                </div>
+                <div class="card-preview">
+                    <p class="font-cinzel text-[10px] uppercase tracking-[0.25em] text-gold-300 mb-1">CONVITE DE CASAMENTO</p>
+                    <h2 class="font-cinzel text-lg font-bold text-gold-gradient mb-2">CRISTINA & ELIVARDO</h2>
+                    <p class="font-serif italic text-xs text-gray-300">06 DE DEZEMBRO DE 2026</p>
+                </div>
+                <div class="pocket"></div>
+            </div>
+        </div>
+        <p class="font-cinzel text-xs uppercase tracking-[0.3em] text-gold-300 mt-8 animate-pulse">
+            <i class="fas fa-hand-pointer mr-2"></i> Clique para abrir
+        </p>
+    </div>
+
+    <!-- Player de Áudio Flutuante -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-dark-card/90 border border-gold-500/40 p-2.5 rounded-full shadow-2xl backdrop-blur-md">
+        <button id="musicToggle" class="w-10 h-10 rounded-full bg-gold-500 text-black flex items-center justify-center font-bold shadow-lg hover:scale-105 transition-all">
+            <i id="musicIcon" class="fas fa-play text-sm"></i>
+        </button>
+        <span class="text-xs uppercase tracking-widest text-gold-300 font-cinzel pr-3 hidden sm:inline">Frei Gilson</span>
+        
+        <!-- ELEMENTO DE ÁUDIO REAL (Apenas certifique-se que o arquivo 'musica.mp3' está na mesma pasta) -->
+        <audio id="bgMusic" loop preload="auto">
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Navegação -->
+    <nav class="fixed top-0 w-full z-40 bg-dark-bg/80 backdrop-blur-lg border-b border-gold-500/20 py-4 px-8 flex justify-between items-center">
+        <a href="#home" class="font-cinzel text-xl md:text-2xl font-bold tracking-widest text-gold-gradient">C & E</a>
+        <div class="hidden md:flex gap-8 text-xs font-cinzel uppercase tracking-[0.2em] text-gray-300">
+            <a href="#home" class="hover:text-gold-500 transition-colors">Início</a>
+            <a href="#evento" class="hover:text-gold-500 transition-colors">A Cerimônia</a>
+            <a href="#recepcao" class="hover:text-gold-500 transition-colors">A Recepção</a>
+            <a href="#presentes" class="hover:text-gold-500 transition-colors">Lista de Presença</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative px-4 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');">
+        <div class="text-center max-w-4xl mx-auto space-y-8 pt-20">
+            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.35em] text-gold-300">Convidam para a cerimônia de seu casamento</p>
+            
+            <h1 class="font-cinzel text-5xl md:text-8xl font-bold tracking-tight text-gold-gradient py-2">
+                CRISTINA & ELIVARDO
+            </h1>
+            
+            <div class="flex items-center justify-center gap-6">
+                <div class="h-[1px] w-12 md:w-20 bg-gold-500/60"></div>
+                <p class="font-serif italic text-2xl md:text-3xl text-gray-200">06 DE DEZEMBRO DE 2026</p>
+                <div class="h-[1px] w-12 md:w-20 bg-gold-500/60"></div>
+            </div>
+
+            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.2em] text-gold-500 font-semibold">
+                DOMINGO, ÀS 15:00
+            </p>
+
+            <p class="font-serif italic text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed pt-2">
+                “Deus é amor, e quem permanece no amor permanece em Deus, e Deus nele.”
+                <span class="block text-sm font-sans tracking-widest text-gold-300 not-italic mt-2">— 1 JOÃO 4:16</span>
+            </p>
+
+            <!-- Contagem Regressiva -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-6">
+                <div class="glass-gold p-4 rounded-xl text-center">
+                    <span id="days" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Dias</span>
+                </div>
+                <div class="glass-gold p-4 rounded-xl text-center">
+                    <span id="hours" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Horas</span>
+                </div>
+                <div class="glass-gold p-4 rounded-xl text-center">
+                    <span id="minutes" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Minutos</span>
+                </div>
+                <div class="glass-gold p-4 rounded-xl text-center">
+                    <span id="seconds" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Segundos</span>
+                </div>
+            </div>
+
+            <!-- Botões Rápidos -->
+            <div class="pt-8 flex flex-wrap justify-center gap-4">
+                <a href="https://maps.app.goo.gl/21VKiy43ktHkuGwr7" target="_blank" class="bg-gradient-to-r from-gold-500 to-gold-700 text-black font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <i class="fas fa-church mr-2"></i> Cerimônia
+                </a>
+                <a href="https://maps.app.goo.gl/6GjVEFKfYJJWNfARA" target="_blank" class="bg-dark-card border border-gold-500/50 text-gold-300 hover:text-white font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <i class="fas fa-glass-cheers mr-2"></i> Recepção
+                </a>
+                <a href="https://wa.link/s7j3tt" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300">
+                    <i class="fab fa-whatsapp mr-2"></i> Lista de Presença
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- O Evento / Detalhes -->
+    <section id="evento" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="font-cinzel text-3xl md:text-5xl text-gold-gradient font-bold tracking-widest mb-3">PROGRAMAÇÃO</h2>
+            <div class="w-24 h-[1px] bg-gold-500 mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <!-- Cerimônia -->
+            <div class="glass-gold p-10 rounded-2xl relative overflow-hidden group flex flex-col justify-between">
+                <div>
+                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-church"></i></div>
+                    <h3 class="font-cinzel text-2xl text-gold-300 font-bold mb-2">A CERIMÔNIA</h3>
+                    <p class="text-xs uppercase tracking-widest text-gold-500 mb-6 font-semibold">Domingo — 15:00h</p>
+                    <p class="text-lg font-serif text-gray-200 font-bold mb-2">Paróquia Nossa Senhora da Conceição</p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-8">
+                        R. Joaquim Bezerra, 235<br>
+                        Messejana, Fortaleza - CE, 60842-010
+                    </p>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/21VKiy43ktHkuGwr7" target="_blank" class="w-full text-center bg-gradient-to-r from-gold-500 to-gold-700 text-black font-cinzel font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all hover:brightness-110">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Ver no Mapa (Cerimônia)
+                </a>
+            </div>
+
+            <!-- Recepção -->
+            <div id="recepcao" class="glass-gold p-10 rounded-2xl relative overflow-hidden group flex flex-col justify-between">
+                <div>
+                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-home"></i></div>
+                    <h3 class="font-cinzel text-2xl text-gold-300 font-bold mb-2">A RECEPÇÃO</h3>
+                    <p class="text-xs uppercase tracking-widest text-gold-500 mb-6 font-semibold">Após a Cerimônia</p>
+                    <p class="text-sm uppercase tracking-wider text-gray-300 mb-2">Os convidados serão recepcionados em nossa residência</p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-8">
+                        R. São Marcos, 210 - Coaçu<br>
+                        Fortaleza - CE, 60872-280
+                    </p>
+                </div>
+                
+                <a href="https://maps.app.goo.gl/6GjVEFKfYJJWNfARA" target="_blank" class="w-full text-center bg-gradient-to-r from-gold-500 to-gold-700 text-black font-cinzel font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all hover:brightness-110">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Ver no Mapa (Recepção)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Presença / WhatsApp -->
+    <section id="presentes" class="py-20 px-6 bg-dark-card border-t border-gold-500/20 text-center">
+        <div class="max-w-2xl mx-auto glass-gold p-10 rounded-3xl">
+            <div class="text-gold-500 text-4xl mb-4"><i class="fab fa-whatsapp"></i></div>
+            <h2 class="font-cinzel text-3xl font-bold text-gold-gradient tracking-widest mb-4">LISTA DE PRESENÇA</h2>
+            <p class="text-xs text-gray-300 leading-relaxed mb-8 font-sans">
+                Sua presença é muito importante para nós! Por favor, confirme a sua presença ou acesse a nossa lista entrando em contacto connosco.
+            </p>
+            
+            <a href="https://wa.link/s7j3tt" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-cinzel font-bold text-xs uppercase tracking-widest px-10 py-4 rounded-xl shadow-xl transition-all duration-300 hover:scale-105">
+                Confirmar via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-10 bg-dark-bg text-center text-xs text-gray-500 font-cinzel border-t border-gold-500/10">
+        <p class="text-gold-300 font-bold mb-1">CRISTINA & ELIVARDO</p>
+        <p>06 . 12 . 2026 • Fortaleza - CE</p>
+    </footer>
+
+    <script>
+        const envelopeWrapper = document.getElementById('envelopeWrapper');
+        const envelopeOverlay = document.getElementById('envelopeOverlay');
+        const flashOverlay = document.getElementById('flashOverlay');
+        const audio = document.getElementById('bgMusic');
+        const icon = document.getElementById('musicIcon');
+        const btn = document.getElementById('musicToggle');
+
+        let isOpened = false;
+
+        // Regra essencial: Garantir que o áudio vai para os 84 segundos assim que estiver pronto para tocar
+        audio.addEventListener('canplay', () => {
+            if (audio.currentTime < 1) {
+                audio.currentTime = 1;
+            }
+        });
+
+        // Clique para Abrir o Convite
+        envelopeWrapper.addEventListener('click', () => {
+            if (isOpened) return;
+            isOpened = true;
+
+            // Força a posição nos 84s e dá Play
+            audio.currentTime = 1;
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    icon.className = "fas fa-pause text-sm";
+                }).catch(err => {
+                    console.log("Bloqueio de áudio detectado:", err);
+                });
+            }
+
+            // Animação do envelope
+            envelopeWrapper.classList.add('open');
+
+            setTimeout(() => {
+                flashOverlay.classList.add('active');
+            }, 500);
+
+            setTimeout(() => {
+                envelopeOverlay.classList.add('hide');
+            }, 1800);
+
+            setTimeout(() => {
+                flashOverlay.classList.remove('active');
+            }, 2600);
+        });
+
+        // Alternar Play e Pause no Botão Flutuante
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                if (audio.currentTime < 1) {
+                    audio.currentTime = 1;
+                }
+                audio.play();
+                icon.className = "fas fa-pause text-sm";
+            } else {
+                audio.pause();
+                icon.className = "fas fa-play text-sm";
+            }
+        });
+
+        // Contagem Regressiva para 06/12/2026 15:00
+        const weddingDate = new Date('December 6, 2026 15:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+
+            if (diff > 0) {
+                document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
