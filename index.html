@@ -18,17 +18,17 @@
             theme: {
                 extend: {
                     colors: {
-                        gold: {
-                            100: '#FFF8E7',
-                            300: '#F3E5AB',
-                            500: '#D4AF37',
-                            700: '#AA771C',
-                            900: '#664608'
+                        oliva: {
+                            100: '#E8EFE0',
+                            300: '#A3B88C',
+                            500: '#6B8E23',
+                            700: '#556B2F',
+                            900: '#3B4A20'
                         },
-                        dark: {
-                            bg: '#0A0A0C',
-                            card: '#141419',
-                            border: '#2A2A35'
+                        perola: {
+                            bg: '#F9F8F6',
+                            card: '#FFFFFF',
+                            border: '#E2DDD5'
                         }
                     },
                     fontFamily: {
@@ -43,28 +43,28 @@
 
     <style>
         body {
-            background-color: #0A0A0C;
-            color: #E2E8F0;
+            background-color: #F9F8F6;
+            color: #2D3748;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        .text-gold-gradient {
-            background: linear-gradient(135deg, #FFF8E7 0%, #D4AF37 50%, #AA771C 100%);
+        .text-oliva-gradient {
+            background: linear-gradient(135deg, #556B2F 0%, #6B8E23 50%, #3B4A20 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .glass-gold {
-            background: rgba(20, 20, 25, 0.75);
+        .glass-perola {
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(85, 107, 47, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(85, 107, 47, 0.08);
         }
 
-        .glass-gold:hover {
-            border-color: rgba(212, 175, 55, 0.6);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        .glass-perola:hover {
+            border-color: rgba(85, 107, 47, 0.5);
+            box-shadow: 0 0 25px rgba(85, 107, 47, 0.15);
         }
 
         /* --- ESTILOS DO ENVELOPE DE ABERTURA --- */
@@ -72,7 +72,7 @@
             position: fixed;
             inset: 0;
             z-index: 100;
-            background-color: #050507;
+            background-color: #F3F0EA;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -110,7 +110,7 @@
             width: 10vmax;
             height: 10vmax;
             border-radius: 50%;
-            background: radial-gradient(circle, #ffffff 0%, #fff8e7 35%, #f3e5ab 60%, rgba(212,175,55,0) 100%);
+            background: radial-gradient(circle, #ffffff 0%, #f9f8f6 35%, #e8efe0 60%, rgba(107,142,35,0) 100%);
             transform: translate(-50%, -50%) scale(1);
             filter: blur(15px);
         }
@@ -125,7 +125,7 @@
             left: 50%;
             width: 150vmax;
             height: 150vmax;
-            background: radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,248,231,0.95) 25%, rgba(212,175,55,0.7) 60%, rgba(10,10,12,0) 100%);
+            background: radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(249,248,246,0.95) 25%, rgba(107,142,35,0.4) 60%, rgba(243,240,234,0) 100%);
             transform: translate(-50%, -50%) scale(0.1) rotate(0deg);
             filter: blur(40px);
         }
@@ -172,9 +172,9 @@
             position: relative;
             width: 320px;
             height: 220px;
-            background-color: #121215;
+            background-color: #EFECE6;
             border-radius: 6px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 20px 40px rgba(59, 74, 32, 0.15), 0 0 20px rgba(85, 107, 47, 0.1);
             transition: transform 0.4s ease;
         }
 
@@ -190,11 +190,11 @@
             height: 0;
             border-left: 160px solid transparent;
             border-right: 160px solid transparent;
-            border-top: 125px solid #1a1a20;
+            border-top: 125px solid #E2DDD5;
             transform-origin: top;
             transition: transform 0.8s ease-in-out, z-index 0.2s ease-in-out;
             z-index: 4;
-            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.1));
         }
 
         .stamp {
@@ -204,16 +204,16 @@
             transform: translateX(-50%);
             width: 50px;
             height: 50px;
-            background: radial-gradient(circle, #FFF8E7 0%, #D4AF37 60%, #AA771C 100%);
+            background: radial-gradient(circle, #6B8E23 0%, #556B2F 70%, #3B4A20 100%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #0a0a0c;
+            color: #FFFFFF;
             font-family: 'Cinzel', serif;
             font-weight: 700;
             font-size: 13px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 10px rgba(59, 74, 32, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.5);
             z-index: 5;
             transition: opacity 0.4s ease, transform 0.3s ease;
         }
@@ -228,9 +228,9 @@
             left: 0;
             width: 0;
             height: 0;
-            border-left: 160px solid #141419;
-            border-right: 160px solid #141419;
-            border-bottom: 115px solid #1c1c24;
+            border-left: 160px solid #FAF8F5;
+            border-right: 160px solid #FAF8F5;
+            border-bottom: 115px solid #F3F0EA;
             border-radius: 0 0 6px 6px;
             z-index: 3;
         }
@@ -242,18 +242,19 @@
             transform: translateX(-50%);
             width: 290px;
             height: 190px;
-            background: linear-gradient(145deg, #18181f, #0d0d10);
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            background: #FFFFFF;
+            border: 1px solid rgba(85, 107, 47, 0.3);
             border-radius: 4px;
             padding: 20px;
             text-align: center;
-            color: #fff;
+            color: #2D3748;
             z-index: 2;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             transition: transform 1s ease-in-out, z-index 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         /* Animações de Abertura */
@@ -272,7 +273,7 @@
         }
     </style>
 </head>
-<body class="selection:bg-gold-500 selection:text-black">
+<body class="selection:bg-oliva-500 selection:text-white">
 
     <!-- CLARÃO DE TRANSIÇÃO FLUIDO -->
     <div id="flashOverlay">
@@ -288,95 +289,94 @@
                     <div class="stamp">C&E</div>
                 </div>
                 <div class="card-preview">
-                    <p class="font-cinzel text-[10px] uppercase tracking-[0.25em] text-gold-300 mb-1">CONVITE DE CASAMENTO</p>
-                    <h2 class="font-cinzel text-lg font-bold text-gold-gradient mb-2">CRISTINA & ELIVARDO</h2>
-                    <p class="font-serif italic text-xs text-gray-300">06 DE DEZEMBRO DE 2026</p>
+                    <p class="font-cinzel text-[10px] uppercase tracking-[0.25em] text-oliva-700 mb-1">CONVITE DE CASAMENTO</p>
+                    <h2 class="font-cinzel text-lg font-bold text-oliva-gradient mb-2">CRISTINA & ELIVARDO</h2>
+                    <p class="font-serif italic text-xs text-gray-600">06 DE DEZEMBRO DE 2026</p>
                 </div>
                 <div class="pocket"></div>
             </div>
         </div>
-        <p class="font-cinzel text-xs uppercase tracking-[0.3em] text-gold-300 mt-8 animate-pulse">
+        <p class="font-cinzel text-xs uppercase tracking-[0.3em] text-oliva-700 mt-8 animate-pulse font-semibold">
             <i class="fas fa-hand-pointer mr-2"></i> Clique para abrir
         </p>
     </div>
 
     <!-- Player de Áudio Flutuante -->
-    <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-dark-card/90 border border-gold-500/40 p-2.5 rounded-full shadow-2xl backdrop-blur-md">
-        <button id="musicToggle" class="w-10 h-10 rounded-full bg-gold-500 text-black flex items-center justify-center font-bold shadow-lg hover:scale-105 transition-all">
+    <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-white/90 border border-oliva-500/30 p-2.5 rounded-full shadow-xl backdrop-blur-md">
+        <button id="musicToggle" class="w-10 h-10 rounded-full bg-oliva-700 text-white flex items-center justify-center font-bold shadow-lg hover:scale-105 transition-all">
             <i id="musicIcon" class="fas fa-play text-sm"></i>
         </button>
-        <span class="text-xs uppercase tracking-widest text-gold-300 font-cinzel pr-3 hidden sm:inline">Frei Gilson</span>
+        <span class="text-xs uppercase tracking-widest text-oliva-900 font-cinzel font-semibold pr-3 hidden sm:inline">Música de Fundo</span>
         
-        <!-- ELEMENTO DE ÁUDIO REAL (Apenas certifique-se que o arquivo 'musica.mp3' está na mesma pasta) -->
         <audio id="bgMusic" loop preload="auto">
             <source src="musica.mp3" type="audio/mpeg">
         </audio>
     </div>
 
     <!-- Navegação -->
-    <nav class="fixed top-0 w-full z-40 bg-dark-bg/80 backdrop-blur-lg border-b border-gold-500/20 py-4 px-8 flex justify-between items-center">
-        <a href="#home" class="font-cinzel text-xl md:text-2xl font-bold tracking-widest text-gold-gradient">C & E</a>
-        <div class="hidden md:flex gap-8 text-xs font-cinzel uppercase tracking-[0.2em] text-gray-300">
-            <a href="#home" class="hover:text-gold-500 transition-colors">Início</a>
-            <a href="#evento" class="hover:text-gold-500 transition-colors">A Cerimônia</a>
-            <a href="#recepcao" class="hover:text-gold-500 transition-colors">A Recepção</a>
-            <a href="#presentes" class="hover:text-gold-500 transition-colors">Lista de Presença</a>
+    <nav class="fixed top-0 w-full z-40 bg-perola-bg/90 backdrop-blur-lg border-b border-oliva-500/20 py-4 px-8 flex justify-between items-center shadow-sm">
+        <a href="#home" class="font-cinzel text-xl md:text-2xl font-bold tracking-widest text-oliva-gradient">C & E</a>
+        <div class="hidden md:flex gap-8 text-xs font-cinzel uppercase tracking-[0.2em] text-gray-700 font-semibold">
+            <a href="#home" class="hover:text-oliva-700 transition-colors">Início</a>
+            <a href="#evento" class="hover:text-oliva-700 transition-colors">A Cerimônia</a>
+            <a href="#recepcao" class="hover:text-oliva-700 transition-colors">A Recepção</a>
+            <a href="#presentes" class="hover:text-oliva-700 transition-colors">Lista de Presença</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative px-4 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(10,10,12,0.65), rgba(10,10,12,0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');">
+    <section id="home" class="min-h-screen flex items-center justify-center relative px-4 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(249,248,246,0.75), rgba(249,248,246,0.95)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80');">
         <div class="text-center max-w-4xl mx-auto space-y-8 pt-20">
-            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.35em] text-gold-300">Convidam para a cerimônia de seu casamento</p>
+            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.35em] text-oliva-700 font-semibold">Convidam para a cerimônia de seu casamento</p>
             
-            <h1 class="font-cinzel text-5xl md:text-8xl font-bold tracking-tight text-gold-gradient py-2">
+            <h1 class="font-cinzel text-5xl md:text-8xl font-bold tracking-tight text-oliva-gradient py-2">
                 CRISTINA & ELIVARDO
             </h1>
             
             <div class="flex items-center justify-center gap-6">
-                <div class="h-[1px] w-12 md:w-20 bg-gold-500/60"></div>
-                <p class="font-serif italic text-2xl md:text-3xl text-gray-200">06 DE DEZEMBRO DE 2026</p>
-                <div class="h-[1px] w-12 md:w-20 bg-gold-500/60"></div>
+                <div class="h-[1px] w-12 md:w-20 bg-oliva-500/50"></div>
+                <p class="font-serif italic text-2xl md:text-3xl text-gray-800">06 DE DEZEMBRO DE 2026</p>
+                <div class="h-[1px] w-12 md:w-20 bg-oliva-500/50"></div>
             </div>
 
-            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.2em] text-gold-500 font-semibold">
+            <p class="font-cinzel text-xs md:text-sm uppercase tracking-[0.2em] text-oliva-900 font-bold">
                 DOMINGO, ÀS 15:00
             </p>
 
-            <p class="font-serif italic text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed pt-2">
+            <p class="font-serif italic text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed pt-2">
                 “Deus é amor, e quem permanece no amor permanece em Deus, e Deus nele.”
-                <span class="block text-sm font-sans tracking-widest text-gold-300 not-italic mt-2">— 1 JOÃO 4:16</span>
+                <span class="block text-sm font-sans tracking-widest text-oliva-700 not-italic mt-2 font-semibold">— 1 JOÃO 4:16</span>
             </p>
 
             <!-- Contagem Regressiva -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-6">
-                <div class="glass-gold p-4 rounded-xl text-center">
-                    <span id="days" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
-                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Dias</span>
+                <div class="glass-perola p-4 rounded-xl text-center">
+                    <span id="days" class="font-cinzel text-3xl md:text-5xl font-bold text-oliva-700">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-600 mt-1 font-semibold">Dias</span>
                 </div>
-                <div class="glass-gold p-4 rounded-xl text-center">
-                    <span id="hours" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
-                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Horas</span>
+                <div class="glass-perola p-4 rounded-xl text-center">
+                    <span id="hours" class="font-cinzel text-3xl md:text-5xl font-bold text-oliva-700">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-600 mt-1 font-semibold">Horas</span>
                 </div>
-                <div class="glass-gold p-4 rounded-xl text-center">
-                    <span id="minutes" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
-                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Minutos</span>
+                <div class="glass-perola p-4 rounded-xl text-center">
+                    <span id="minutes" class="font-cinzel text-3xl md:text-5xl font-bold text-oliva-700">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-600 mt-1 font-semibold">Minutos</span>
                 </div>
-                <div class="glass-gold p-4 rounded-xl text-center">
-                    <span id="seconds" class="font-cinzel text-3xl md:text-5xl font-bold text-gold-500">00</span>
-                    <span class="block text-[10px] uppercase tracking-widest text-gray-400 mt-1">Segundos</span>
+                <div class="glass-perola p-4 rounded-xl text-center">
+                    <span id="seconds" class="font-cinzel text-3xl md:text-5xl font-bold text-oliva-700">00</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-gray-600 mt-1 font-semibold">Segundos</span>
                 </div>
             </div>
 
             <!-- Botões Rápidos -->
             <div class="pt-8 flex flex-wrap justify-center gap-4">
-                <a href="https://maps.app.goo.gl/21VKiy43ktHkuGwr7" target="_blank" class="bg-gradient-to-r from-gold-500 to-gold-700 text-black font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300">
+                <a href="https://maps.app.goo.gl/21VKiy43ktHkuGwr7" target="_blank" class="bg-gradient-to-r from-oliva-700 to-oliva-900 text-white font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
                     <i class="fas fa-church mr-2"></i> Cerimônia
                 </a>
-                <a href="https://maps.app.goo.gl/6GjVEFKfYJJWNfARA" target="_blank" class="bg-dark-card border border-gold-500/50 text-gold-300 hover:text-white font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300">
+                <a href="https://maps.app.goo.gl/6GjVEFKfYJJWNfARA" target="_blank" class="bg-white border border-oliva-700/40 text-oliva-900 hover:bg-oliva-100 font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-md hover:scale-105 transition-transform duration-300">
                     <i class="fas fa-glass-cheers mr-2"></i> Recepção
                 </a>
-                <a href="https://wa.link/s7j3tt" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform duration-300">
+                <a href="https://wa.link/s7j3tt" target="_blank" class="bg-emerald-700 hover:bg-emerald-600 text-white font-cinzel font-bold text-xs uppercase tracking-[0.15em] px-8 py-4 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
                     <i class="fab fa-whatsapp mr-2"></i> Lista de Presença
                 </a>
             </div>
@@ -386,43 +386,43 @@
     <!-- O Evento / Detalhes -->
     <section id="evento" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="text-center mb-16">
-            <h2 class="font-cinzel text-3xl md:text-5xl text-gold-gradient font-bold tracking-widest mb-3">PROGRAMAÇÃO</h2>
-            <div class="w-24 h-[1px] bg-gold-500 mx-auto"></div>
+            <h2 class="font-cinzel text-3xl md:text-5xl text-oliva-gradient font-bold tracking-widest mb-3">PROGRAMAÇÃO</h2>
+            <div class="w-24 h-[2px] bg-oliva-500 mx-auto"></div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-10">
             <!-- Cerimônia -->
-            <div class="glass-gold p-10 rounded-2xl relative overflow-hidden group flex flex-col justify-between">
+            <div class="glass-perola p-10 rounded-2xl relative overflow-hidden group flex flex-col justify-between">
                 <div>
-                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-church"></i></div>
-                    <h3 class="font-cinzel text-2xl text-gold-300 font-bold mb-2">A CERIMÔNIA</h3>
-                    <p class="text-xs uppercase tracking-widest text-gold-500 mb-6 font-semibold">Domingo — 15:00h</p>
-                    <p class="text-lg font-serif text-gray-200 font-bold mb-2">Paróquia Nossa Senhora da Conceição</p>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-8">
+                    <div class="text-oliva-700 text-3xl mb-4"><i class="fas fa-church"></i></div>
+                    <h3 class="font-cinzel text-2xl text-oliva-900 font-bold mb-2">A CERIMÔNIA</h3>
+                    <p class="text-xs uppercase tracking-widest text-oliva-700 mb-6 font-bold">Domingo — 15:00h</p>
+                    <p class="text-lg font-serif text-gray-800 font-bold mb-2">Paróquia Nossa Senhora da Conceição</p>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-8">
                         R. Joaquim Bezerra, 235<br>
                         Messejana, Fortaleza - CE, 60842-010
                     </p>
                 </div>
                 
-                <a href="https://maps.app.goo.gl/21VKiy43ktHkuGwr7" target="_blank" class="w-full text-center bg-gradient-to-r from-gold-500 to-gold-700 text-black font-cinzel font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all hover:brightness-110">
+                <a href="https://maps.app.goo.gl/21VKiy43ktHkuGwr7" target="_blank" class="w-full text-center bg-gradient-to-r from-oliva-700 to-oliva-900 text-white font-cinzel font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all hover:brightness-110 shadow-md">
                     <i class="fas fa-map-marker-alt mr-2"></i> Ver no Mapa (Cerimônia)
                 </a>
             </div>
 
             <!-- Recepção -->
-            <div id="recepcao" class="glass-gold p-10 rounded-2xl relative overflow-hidden group flex flex-col justify-between">
+            <div id="recepcao" class="glass-perola p-10 rounded-2xl relative overflow-hidden group flex flex-col justify-between">
                 <div>
-                    <div class="text-gold-500 text-3xl mb-4"><i class="fas fa-home"></i></div>
-                    <h3 class="font-cinzel text-2xl text-gold-300 font-bold mb-2">A RECEPÇÃO</h3>
-                    <p class="text-xs uppercase tracking-widest text-gold-500 mb-6 font-semibold">Após a Cerimônia</p>
-                    <p class="text-sm uppercase tracking-wider text-gray-300 mb-2">Os convidados serão recepcionados em nossa residência</p>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-8">
+                    <div class="text-oliva-700 text-3xl mb-4"><i class="fas fa-home"></i></div>
+                    <h3 class="font-cinzel text-2xl text-oliva-900 font-bold mb-2">A RECEPÇÃO</h3>
+                    <p class="text-xs uppercase tracking-widest text-oliva-700 mb-6 font-bold">Domingo — 19:00h</p>
+                    <p class="text-sm uppercase tracking-wider text-gray-700 mb-2 font-semibold">Os convidados serão recepcionados em nossa residência</p>
+                    <p class="text-xs text-gray-600 leading-relaxed mb-8">
                         R. São Marcos, 210 - Coaçu<br>
                         Fortaleza - CE, 60872-280
                     </p>
                 </div>
                 
-                <a href="https://maps.app.goo.gl/6GjVEFKfYJJWNfARA" target="_blank" class="w-full text-center bg-gradient-to-r from-gold-500 to-gold-700 text-black font-cinzel font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all hover:brightness-110">
+                <a href="https://maps.app.goo.gl/6GjVEFKfYJJWNfARA" target="_blank" class="w-full text-center bg-gradient-to-r from-oliva-700 to-oliva-900 text-white font-cinzel font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl transition-all hover:brightness-110 shadow-md">
                     <i class="fas fa-map-marker-alt mr-2"></i> Ver no Mapa (Recepção)
                 </a>
             </div>
@@ -430,23 +430,23 @@
     </section>
 
     <!-- Lista de Presença / WhatsApp -->
-    <section id="presentes" class="py-20 px-6 bg-dark-card border-t border-gold-500/20 text-center">
-        <div class="max-w-2xl mx-auto glass-gold p-10 rounded-3xl">
-            <div class="text-gold-500 text-4xl mb-4"><i class="fab fa-whatsapp"></i></div>
-            <h2 class="font-cinzel text-3xl font-bold text-gold-gradient tracking-widest mb-4">LISTA DE PRESENÇA</h2>
-            <p class="text-xs text-gray-300 leading-relaxed mb-8 font-sans">
+    <section id="presentes" class="py-20 px-6 bg-perola-card border-t border-oliva-500/20 text-center">
+        <div class="max-w-2xl mx-auto glass-perola p-10 rounded-3xl">
+            <div class="text-emerald-700 text-4xl mb-4"><i class="fab fa-whatsapp"></i></div>
+            <h2 class="font-cinzel text-3xl font-bold text-oliva-gradient tracking-widest mb-4">LISTA DE PRESENÇA</h2>
+            <p class="text-xs text-gray-700 leading-relaxed mb-8 font-sans font-medium">
                 Sua presença é muito importante para nós! Por favor, confirme a sua presença ou acesse a nossa lista entrando em contacto connosco.
             </p>
             
-            <a href="https://wa.link/s7j3tt" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-cinzel font-bold text-xs uppercase tracking-widest px-10 py-4 rounded-xl shadow-xl transition-all duration-300 hover:scale-105">
+            <a href="https://wa.link/s7j3tt" target="_blank" class="inline-block bg-emerald-700 hover:bg-emerald-600 text-white font-cinzel font-bold text-xs uppercase tracking-widest px-10 py-4 rounded-xl shadow-lg transition-all duration-300 hover:scale-105">
                 Confirmar via WhatsApp
             </a>
         </div>
     </section>
 
     <!-- Rodapé -->
-    <footer class="py-10 bg-dark-bg text-center text-xs text-gray-500 font-cinzel border-t border-gold-500/10">
-        <p class="text-gold-300 font-bold mb-1">CRISTINA & ELIVARDO</p>
+    <footer class="py-10 bg-perola-bg text-center text-xs text-gray-600 font-cinzel border-t border-oliva-500/10">
+        <p class="text-oliva-900 font-bold mb-1">CRISTINA & ELIVARDO</p>
         <p>06 . 12 . 2026 • Fortaleza - CE</p>
     </footer>
 
@@ -460,10 +460,10 @@
 
         let isOpened = false;
 
-        // Regra essencial: Garantir que o áudio vai para os 84 segundos assim que estiver pronto para tocar
+        // Garante que o áudio vai para os 84 segundos assim que estiver pronto
         audio.addEventListener('canplay', () => {
-            if (audio.currentTime < 1) {
-                audio.currentTime = 1;
+            if (audio.currentTime < 84) {
+                audio.currentTime = 84;
             }
         });
 
@@ -473,7 +473,7 @@
             isOpened = true;
 
             // Força a posição nos 84s e dá Play
-            audio.currentTime = 1;
+            audio.currentTime = 84;
             const playPromise = audio.play();
 
             if (playPromise !== undefined) {
@@ -503,8 +503,8 @@
         // Alternar Play e Pause no Botão Flutuante
         btn.addEventListener('click', () => {
             if (audio.paused) {
-                if (audio.currentTime < 1) {
-                    audio.currentTime = 1;
+                if (audio.currentTime < 84) {
+                    audio.currentTime = 84;
                 }
                 audio.play();
                 icon.className = "fas fa-pause text-sm";
